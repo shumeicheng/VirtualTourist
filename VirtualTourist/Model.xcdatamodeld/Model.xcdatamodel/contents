@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="Album" representedClassName=".Album" syncable="YES">
+        <attribute name="pageNo" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="location" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="album" inverseEntity="Location" syncable="YES"/>
+        <relationship name="pictures" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Picture" inverseName="album" inverseEntity="Picture" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName=".Location" syncable="YES">
+        <attribute name="latitude" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="longitude" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="album" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Album" inverseName="location" inverseEntity="Album" syncable="YES"/>
+    </entity>
+    <entity name="Picture" representedClassName=".Picture" syncable="YES">
+        <attribute name="picImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="urlString" attributeType="String" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="album" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="pictures" inverseEntity="Album" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Album" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Location" positionX="-36" positionY="36" width="128" height="90"/>
+        <element name="Picture" positionX="-54" positionY="0" width="128" height="90"/>
+    </elements>
+</model>
